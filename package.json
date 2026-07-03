@@ -1,0 +1,28 @@
+{
+  "name": "whatsapp-ofertas-bot",
+  "version": "1.0.0",
+  "description": "Bot que busca ofertas no Mercado Livre, Shopee, Amazon e Magazine Luiza e posta automaticamente em um grupo de WhatsApp.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "author": "Jéssica Maximiano",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "list-groups": "node src/listGroups.js",
+    "ml-auth": "node src/mlAuthSetup.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.9",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "luxon": "^3.5.0",
+    "node-cron": "^3.0.3",
+    "pino": "^9.5.0",
+    "pino-pretty": "^11.3.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
