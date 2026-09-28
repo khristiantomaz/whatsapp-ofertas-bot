@@ -144,7 +144,7 @@ integrações externas instáveis/sujeitas a bloqueio.
 ### Instalação
 
 ```bash
-git clone <url-deste-repositorio>
+git clone https://github.com/jessicafmaximiano/whatsapp-ofertas-bot.git
 cd whatsapp-ofertas-bot
 npm install
 cp .env.example .env
