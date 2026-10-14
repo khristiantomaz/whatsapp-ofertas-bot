@@ -9,7 +9,10 @@ function required(name, value) {
 
 const config = {
   whatsapp: {
-    groupId: required('WHATSAPP_GROUP_ID', process.env.WHATSAPP_GROUP_ID),
+    destinationId: required(
+      'WHATSAPP_CHANNEL_ID or WHATSAPP_GROUP_ID',
+      process.env.WHATSAPP_CHANNEL_ID || process.env.WHATSAPP_GROUP_ID
+    ),
     sessionDir: process.env.SESSION_DIR || './data/auth',
   },
   schedule: {

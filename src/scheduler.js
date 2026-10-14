@@ -5,7 +5,7 @@ const logger = require('./logger');
 const postedStore = require('./postedStore');
 const { getNextDeal } = require('./dealsAggregator');
 const { formatDeal } = require('./formatter');
-const { sendToGroup } = require('./whatsapp');
+const { sendToDestination } = require('./whatsapp');
 
 function isWithinWindow() {
   const now = DateTime.now().setZone(config.schedule.timezone);
@@ -33,11 +33,11 @@ async function postOneDeal() {
 
   const message = formatDeal(deal);
   try {
-    await sendToGroup(message, deal.imageUrl);
+    await sendToDestination(message, deal.imageUrl);
     postedStore.markPosted(deal.id);
     logger.info({ id: deal.id, title: deal.title }, '[Scheduler] Oferta postada com sucesso.');
   } catch (err) {
-    logger.error({ err: err.message }, '[Scheduler] Falha ao enviar mensagem para o grupo.');
+    logger.error({ err: err.message }, '[Scheduler] Falha ao enviar mensagem para o destino configurado.');
   }
 }
 

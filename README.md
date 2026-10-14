@@ -163,6 +163,21 @@ npm run list-groups
 Escaneie o QR code exibido no terminal e copie o ID do grupo desejado
 para `WHATSAPP_GROUP_ID` no `.env`.
 
+### Publicar em um canal do WhatsApp
+
+O bot também pode publicar diretamente em um canal existente. O número
+conectado ao bot precisa ser administrador do canal. Coloque o link de
+convite do canal em `WHATSAPP_CHANNEL_INVITE_URL` no `.env` e rode:
+
+```bash
+npm run channel-id
+```
+
+Escaneie o QR code se solicitado. Copie o ID do canal exibido para
+`WHATSAPP_CHANNEL_ID` e remova o link de convite do `.env`. Quando
+`WHATSAPP_CHANNEL_ID` estiver preenchido, ele tem prioridade sobre
+`WHATSAPP_GROUP_ID`.
+
 ### Rodar o bot
 
 ```bash

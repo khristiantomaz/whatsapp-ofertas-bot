@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node src/index.js",
     "list-groups": "node src/listGroups.js",
+    "channel-id": "node src/channelIdSetup.js",
     "ml-auth": "node src/mlAuthSetup.js"
   },
   "dependencies": {

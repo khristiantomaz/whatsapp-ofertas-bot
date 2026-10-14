@@ -73,16 +73,16 @@ function whenReady() {
   return new Promise((resolve) => readyResolvers.push(resolve));
 }
 
-async function sendToGroup(message, imageUrl) {
+async function sendToDestination(message, imageUrl) {
   const sock = await whenReady();
-  const groupId = config.whatsapp.groupId;
-  if (!groupId) {
-    throw new Error('WHATSAPP_GROUP_ID não configurado no .env. Rode "npm run list-groups" para descobrir o ID.');
+  const destinationId = config.whatsapp.destinationId;
+  if (!destinationId) {
+    throw new Error('Configure WHATSAPP_CHANNEL_ID ou WHATSAPP_GROUP_ID no .env.');
   }
 
   if (imageUrl) {
     try {
-      await sock.sendMessage(groupId, { image: { url: imageUrl }, caption: message });
+      await sock.sendMessage(destinationId, { image: { url: imageUrl }, caption: message });
       return;
     } catch (err) {
       logger.warn(
@@ -95,7 +95,7 @@ async function sendToGroup(message, imageUrl) {
   // linkPreview: false evita que o Baileys tente buscar metadados (og:tags)
   // do link para montar uma prévia — isso depende do pacote opcional
   // "link-preview-js" (não instalado) e não é essencial para a mensagem.
-  await sock.sendMessage(groupId, { text: message, linkPreview: false });
+  await sock.sendMessage(destinationId, { text: message, linkPreview: false });
 }
 
-module.exports = { connectWhatsApp, whenReady, sendToGroup };
+module.exports = { connectWhatsApp, whenReady, sendToDestination };
